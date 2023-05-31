@@ -32,8 +32,17 @@ class CPS{
         timeLabel.setOpaque(true);
         timeLabel.setHorizontalAlignment(JTextField.CENTER);
 
+        Timer timer = new Timer(1000, new ActionListner(){
+            public void actionPerformed(ActionEvent e){
+                elapsedTime=elapsedTime  + 1000;
+                seconds = (elapsedTime/1000) % 60;
+                seconds_string = String.format("%02d", seconds);
+                timeLabel.setText(minutes_string+":"+seconds_string);
+            }
+        });
+
         button = new JButton();
-        button.setBounds(500,500,400,100);
+        button.setBounds(100,200,200,100);
         click.setFont(new Font("Verdana",Font.PLAIN,35));
         
         
@@ -41,7 +50,7 @@ class CPS{
         frame.add(click);
         frame.add(button);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800,800);
+        frame.setSize(400,400);
         frame.setLayout(null);
         frame.setVisible(true);
     }
